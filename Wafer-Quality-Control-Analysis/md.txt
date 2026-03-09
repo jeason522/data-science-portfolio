@@ -1,0 +1,18 @@
+# Wafer Quality Control & Statistical Analysis
+
+## 📌 Project Overview
+This project applies statistical modeling and machine learning techniques to analyze semiconductor wafer data (`new_wafer_data.csv`). The goal is to identify key factors affecting yield and to build regression models for quality control prediction.
+
+## 🛠️ Tools & Technologies
+* **Languages:** R, Python (Jupyter Notebook)
+* **Statistical Methods:** Regression Analysis, Two-hit Models, Quality Control modeling.
+* **Visualization:** Correlation Networks.
+
+## 📂 Repository Structure
+* `data/`: Contains sample wafer datasets.
+* `src/`: R scripts and Jupyter notebooks for data processing, regression fitting, and advanced modeling.
+* `output/`: Generated visualizations (e.g., HTML correlation networks).
+* `reports/`: The final comprehensive analysis report (PDF).
+
+## 📊 Key Findings
+(這裡用 1~2 句話，寫下你這份報告最重要的結論，例如：發現了哪個變數對良率影響最大，或是迴歸模型的準確率達到多少。)

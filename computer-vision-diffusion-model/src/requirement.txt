@@ -1,0 +1,14 @@
+# --- (可選) 釘死 PyTorch 版本 ---
+# torch==2.4.1 --index-url https://download.pytorch.org/whl/cu121
+# torchvision==0.19.1 --index-url https://download.pytorch.org/whl/cu121
+# --------------------------------------------------------
+
+numpy>=1.26
+pillow>=10.3
+tqdm>=4.66
+matplotlib>=3.8
+opencv-python>=4.9
+# 若在部分環境與 GUI 套件衝突，可改裝：
+# opencv-python-headless>=4.9
+
+pytorch-fid>=0.3.0

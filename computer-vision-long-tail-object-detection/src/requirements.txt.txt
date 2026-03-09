@@ -1,0 +1,16 @@
+# ---------- Core ----------
+numpy>=1.24
+pandas>=1.5
+pillow>=9.5
+tqdm>=4.66
+PyYAML>=6.0
+matplotlib>=3.7
+opencv-python>=4.8
+
+# Ultralytics (YOLOv8/YOLO11)
+ultralytics>=8.3.0
+
+# PyTorch 
+torch>=2.1.0,<3.0
+torchvision>=0.16.0,<1.0
+
