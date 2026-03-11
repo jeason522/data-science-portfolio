@@ -22,11 +22,11 @@ I am a master's student in Applied Mathematics with interests in machine learnin
 - [Computer Vision Long-Tail Object Detection](./computer-vision-long-tail-object-detection/)
 - [Crack Detection Mamba Implementation](./crack-detection-mamba-implementation/)
 - [Pig Detection Computer Vision](./pig-detection-computer-vision/)
-- [Transformer From Scratch](./Transformer-From-Scratch/)
+- [Transformer From Scratch](./transformer-from-scratch/)
 
 ### Statistics / Applied Mathematics
 - [Nonparametric Circular Data Analysis](./nonparametric-circular-data-analysis/)
-- [Wafer Quality Control Analysis](./Wafer-Quality-Control-Analysis/)
+- [Wafer Quality Control Analysis](./wafer-quality-control-analysis/)
 - [Bike Sharing Regression Analysis](./bike-sharing-regression-analysis/)
 
 ### Finance / Quantitative Analysis
@@ -66,9 +66,9 @@ A quantitative finance project analyzing financial relationships and network str
 | Computer Vision Long-Tail Object Detection | Computer Vision | [Open](./computer-vision-long-tail-object-detection/) |
 | Crack Detection Mamba Implementation | Computer Vision | [Open](./crack-detection-mamba-implementation/) |
 | Pig Detection Computer Vision | Computer Vision | [Open](./pig-detection-computer-vision/) |
-| Transformer From Scratch | Deep Learning | [Open](./Transformer-From-Scratch/) |
+| Transformer From Scratch | Deep Learning | [Open](./transformer-from-scratch/) |
 | Nonparametric Circular Data Analysis | Statistics | [Open](./nonparametric-circular-data-analysis/) |
-| Wafer Quality Control Analysis | Statistics | [Open](./Wafer-Quality-Control-Analysis/) |
+| Wafer Quality Control Analysis | Statistics | [Open](./wafer-quality-control-analysis/) |
 | Bike Sharing Regression Analysis | Regression | [Open](./bike-sharing-regression-analysis/) |
 | Financial Network Analysis | Quantitative Finance | [Open](./financial-network-analysis/) |
 | Hull Tactical Market Prediction | Quantitative Finance | [Open](./hull-tactical-market-prediction/) |

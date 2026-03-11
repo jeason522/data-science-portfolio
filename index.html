@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio | Jason</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dark: #334155;
+            --accent-1: #3b82f6;
+            --accent-2: #8b5cf6;
+            --tag-ml: rgba(59, 130, 246, 0.2);
+            --tag-ml-text: #60a5fa;
+            --tag-cv: rgba(236, 72, 153, 0.2);
+            --tag-cv-text: #f472b6;
+            --tag-dl: rgba(16, 185, 129, 0.2);
+            --tag-dl-text: #34d399;
+            --tag-stat: rgba(245, 158, 11, 0.2);
+            --tag-stat-text: #fbbf24;
+            --tag-fin: rgba(14, 165, 233, 0.2);
+            --tag-fin-text: #38bdf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 50% 10%, rgba(52, 211, 153, 0.1), transparent 30%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-main), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .highlight-gradient {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+            flex-grow: 1;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+        }
+
+        .filter-btn.active {
+            background: var(--text-main);
+            color: var(--text-dark);
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(40, 53, 75, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+        }
+
+        .tag-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.ml { background: var(--tag-ml); color: var(--tag-ml-text); }
+        .tag.cv { background: var(--tag-cv); color: var(--tag-cv-text); }
+        .tag.dl { background: var(--tag-dl); color: var(--tag-dl-text); }
+        .tag.stat { background: var(--tag-stat); color: var(--tag-stat-text); }
+        .tag.fin { background: var(--tag-fin); color: var(--tag-fin-text); }
+
+        .card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 30px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            margin-top: auto;
+        }
+
+        .card:hover .card-footer {
+            color: var(--text-main);
+        }
+
+        .card-footer svg {
+            width: 18px;
+            height: 18px;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-footer svg {
+            transform: translateX(6px);
+            color: var(--accent-1);
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Ambient Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .blob-1 {
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent-2);
+        }
+        
+        .blob-2 {
+            bottom: 0;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--accent-1);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            header { padding: 60px 20px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <header class="fade-in" style="animation-delay: 0.1s;">
+        <h1>Elevating Insights <br>with <span class="highlight-gradient">Data Science</span></h1>
+        <p class="subtitle">A curated collection of projects exploring Machine Learning, Deep Learning, Computer Vision, Statistics, and Quantitative Finance.</p>
+        <div class="social-links">
+            <a href="https://github.com/jeason522" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/%E5%AE%87%E5%80%AB-%E8%91%89-4a12b03b4/" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="filters fade-in" style="animation-delay: 0.2s;">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="ml">Machine Learning</button>
+            <button class="filter-btn" data-filter="cv">Computer Vision</button>
+            <button class="filter-btn" data-filter="dl">Deep Learning</button>
+            <button class="filter-btn" data-filter="stat">Statistics</button>
+            <button class="filter-btn" data-filter="fin">Quant Finance</button>
+        </div>
+
+        <div class="grid" id="projectGrid">
+            <!-- Cards populated dynamically by JS -->
+        </div>
+    </main>
+
+    <script>
+        const projects = [
+            {
+                title: "Handwritten Digit Recognition",
+                desc: "A machine learning project for handwritten digit classification, including model training, optimization comparisons, and overall performance evaluations.",
+                link: "./handwritten-digit-recognition/",
+                category: "ml",
+                tagLabel: "Machine Learning"
+            },
+            {
+                title: "Phishing Website Analysis",
+                desc: "An end-to-end ML project mapped to detect phishing websites, detailing preprocessing pipelines, model training setups, and robust result comparison.",
+                link: "./phishing-website-ml-analysis/",
+                category: "ml",
+                tagLabel: "Machine Learning"
+            },
+            {
+                title: "Diffusion Model & Generative CV",
+                desc: "An exploratory computer vision project tackling diffusion-model-related workflows and advanced generative experiments in the domain of images.",
+                link: "./computer-vision-diffusion-model/",
+                category: "cv",
+                tagLabel: "Computer Vision"
+            },
+            {
+                title: "Long-Tail Object Detection",
+                desc: "Detecting items structured in severe long-tail distribution, aiming to creatively mitigate dataset imbalance within modern computer vision models.",
+                link: "./computer-vision-long-tail-object-detection/",
+                category: "cv",
+                tagLabel: "Computer Vision"
+            },
+            {
+                title: "Crack Detection (Mamba)",
+                desc: "A highly robust vision project utilizing the cutting edge Mamba architecture to reliably detect surface cracks across various materials and contexts.",
+                link: "./crack-detection-mamba-implementation/",
+                category: "cv",
+                tagLabel: "Computer Vision"
+            },
+            {
+                title: "Pig Detection Vision Pipeline",
+                desc: "An object detection and counting pipeline specifically designed and tuned for accurately tracking livestock within agricultural contexts.",
+                link: "./pig-detection-computer-vision/",
+                category: "cv",
+                tagLabel: "Computer Vision"
+            },
+            {
+                title: "Transformer From Scratch",
+                desc: "A deep learning implementation explicitly building the revolutionary Transformer architecture completely from the ground up to understand its mechanics.",
+                link: "./transformer-from-scratch/",
+                category: "dl",
+                tagLabel: "Deep Learning"
+            },
+            {
+                title: "Circular Data Analysis",
+                desc: "A specialized statistical analysis dealing explicitly with circular (directional) data distributions utilizing modern nonparametric methodologies.",
+                link: "./nonparametric-circular-data-analysis/",
+                category: "stat",
+                tagLabel: "Statistics"
+            },
+            {
+                title: "Wafer Quality Control",
+                desc: "Rigorous statistical quality control workflows formulated to systematically detect and analyze subtle manufacturing defects on semiconductor wafers.",
+                link: "./wafer-quality-control-analysis/",
+                category: "stat",
+                tagLabel: "Statistics"
+            },
+            {
+                title: "Bike Sharing Regression",
+                desc: "A predictive regression framework analyzing urban bike-sharing demand against a variety of structural weather constraints and contextual data metrics.",
+                link: "./bike-sharing-regression-analysis/",
+                category: "stat",
+                tagLabel: "Regression"
+            },
+            {
+                title: "Financial Network Structure",
+                desc: "Analyzing distinct financial relationships and complex market structures through the unique lens of quantitative network graphs and structural metrics.",
+                link: "./financial-network-analysis/",
+                category: "fin",
+                tagLabel: "Quant Finance"
+            },
+            {
+                title: "Hull Tactical Market Prediction",
+                desc: "An applied undertaking of predictive investment strategies highly inspired by the classic empirical approaches in quantitative tactical asset allocation.",
+                link: "./hull-tactical-market-prediction/",
+                category: "fin",
+                tagLabel: "Quant Finance"
+            },
+            {
+                title: "Smart Beta Smarter Flows",
+                desc: "A massive quantitative finance deep-dive into the complex mechanics of smart beta ETF flows and their corresponding impacts on market behaviors.",
+                link: "./smart-beta-smarter-flows/",
+                category: "fin",
+                tagLabel: "Quant Finance"
+            }
+        ];
+
+        const grid = document.getElementById('projectGrid');
+        
+        function renderProjects(filter = 'all') {
+            grid.innerHTML = '';
+            
+            let filtered = projects;
+            if (filter !== 'all') {
+                filtered = projects.filter(p => p.category === filter);
+            }
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="no-results fade-in">No projects found for this category.</div>';
+                return;
+            }
+
+            filtered.forEach((proj, index) => {
+                const card = document.createElement('a');
+                card.href = proj.link;
+                card.className = 'card fade-in';
+                // Stagger animations based on index (cap at 10 to not delay too long)
+                card.style.animationDelay = `${0.2 + (Math.min(index, 10) * 0.1)}s`;
+                
+                // Assign CSS tag class based on category
+                let tagClass = proj.category;
+                if (proj.tagLabel === 'Regression') tagClass = 'stat';
+
+                card.innerHTML = `
+                    <div class="tag-wrapper">
+                        <span class="tag ${tagClass}">${proj.tagLabel}</span>
+                    </div>
+                    <h2>${proj.title}</h2>
+                    <p>${proj.desc}</p>
+                    <div class="card-footer">
+                        Explore Project
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        renderProjects();
+
+        // Handle filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Remove active from all
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Add active to clicked
+                e.target.classList.add('active');
+                // Trigger re-render
+                renderProjects(e.target.dataset.filter);
+            });
+        });
+    </script>
+</body>
+</html>
