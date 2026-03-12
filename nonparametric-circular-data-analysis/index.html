@@ -137,6 +137,12 @@
             .container { margin: 20px; padding: 24px; }
             h1 { font-size: 2rem; }
         }
+    
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column !important; align-items: stretch !important; margin: 20px auto !important; }
+            .sidebar { flex: auto !important; position: static !important; }
+            .container { max-width: 100% !important; }
+        }
     </style>
 </head>
 <body>
@@ -148,7 +154,8 @@
             Back to Dashboard
         </a>
     </nav>
-    <main class="container">
+    <div class="page-wrapper" style="max-width: 1200px; margin: 60px auto; display: flex; flex-wrap: wrap; gap: 40px; padding: 0 20px; align-items: flex-start; justify-content: center;">
+    <main class="container" style="margin: 0; flex: 1; min-width: 300px; max-width: 800px;">
         <span class="tag">Statistics</span>
         <h1>Circular Data Analysis</h1>
         
@@ -165,7 +172,35 @@
                 View Project on GitHub
             </a>
         </div>
-    </main>
+        </main>
+    <aside class="sidebar fade-in" style="flex: 0 0 400px; background: var(--container-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 32px; backdrop-filter: blur(16px); position: sticky; top: 100px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+        <h3 style="margin-top: 0; margin-bottom: 24px; font-size: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; color: var(--text-main);">專案摘要</h3>
+        
+        <div style="margin-bottom: 24px;">
+            <strong style="color: var(--accent-1); font-size: 1.15em; display: block; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                問題：在解什麼
+            </strong>
+            <p style="margin-bottom: 0; font-size: 0.95em; color: var(--text-muted); line-height: 1.6;">處理且分析具有方向性（環狀，如時間、角度）的特殊資料分佈。</p>
+        </div>
+        
+        <div style="margin-bottom: 24px;">
+            <strong style="color: var(--accent-2); font-size: 1.15em; display: block; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                方法：用了哪些模型 / 工具
+            </strong>
+            <p style="margin-bottom: 0; font-size: 0.95em; color: var(--text-muted); line-height: 1.6;">現代無母數統計 (Nonparametric) 方法。</p>
+        </div>
+        
+        <div>
+            <strong style="color: #10b981; font-size: 1.15em; display: block; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                結果：做出什麼、比較了什麼
+            </strong>
+            <p style="margin-bottom: 0; font-size: 0.95em; color: var(--text-muted); line-height: 1.6;">提供針對環狀資料的專業統計分析流程。</p>
+        </div>
+    </aside>
+</div>
 </body>
 </html>
 
